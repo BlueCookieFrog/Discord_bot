@@ -51,5 +51,43 @@ class Music(commands.Cog):
         await ctx.send(f"Playing: {nname[0]}")
         print("Playing\n")
 
+
+    @commands.command()
+    async def skip(self, ctx):
+
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
+
+        if not voice or not voice.is_connected():
+            return await ctx.send('I\'m not playing anything')
+
+        if voice.is_paused() or voice.is_playing():
+            voice.stop()
+            await ctx.send('Skipped', delete_after=30)
+
+    @commands.command()
+    async def pause(self, ctx):
+
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
+
+        if not voice or not voice.is_connected():
+            return await ctx.send('I\'m not playing anything')
+        elif voice.is_paused():
+            return
+
+        voice.pause()
+        await ctx.send('Paused', delete_after=30)
+
+    @commands.command()
+    async def resume(self, ctx):
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
+
+        if not voice or not voice.is_connected():
+            return await ctx.send('I\'m not in voice channel', delete_after=30)
+        elif not voice.is_paused():
+            return
+
+        voice.resume()
+        await ctx.send('Resumed')
+
 def setup(bot):
     bot.add_cog(Music(bot))

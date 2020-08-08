@@ -20,31 +20,44 @@ async def on_ready():
 
 @bot.command()
 async def load(ctx, extension):
-    bot.load_extension(f'cogs.{extension}')
-    print(f'Loaded {extension}')
+
+    if str(ctx.author) == 'BlueCookieFrog#9874':
+        bot.load_extension(f'cogs.{extension}')
+        print(f'Loaded {extension}')
+        await ctx.send(f'Loaded {extension}')
+    else:
+        await ctx.send(file = discord.File(f'./denied.gif'), delete_after=20)
 
 @bot.command()
 async def unload(ctx, extension):
-    bot.unload_extension(f'cogs.{extension}')
-    print(f'Unloaded {extension}')
+
+    if str(ctx.author) == 'BlueCookieFrog#9874':
+        bot.unload_extension(f'cogs.{extension}')
+        print(f'Unloaded {extension}')
+    else:
+        await ctx.send(file = discord.File(f'./denied.gif'), delete_after=20)
 
 @bot.command()
 async def reload(ctx, extension):
-    if extension == 'all':
 
-        for filename in os.listdir('./cogs'):
-            if filename.endswith('.py'):
-                try:
-                    bot.unload_extension(f'cogs.{filename[:-3]}')
-                except commands.ExtensionNotLoaded:
-                    pass
-                bot.load_extension(f'cogs.{filename[:-3]}')
-                print(f'Reloaded {filename}')
-        print(f'Reloaded all')
+    if str(ctx.author) == 'BlueCookieFrog#9874':
+        if extension == 'all':
+
+            for filename in os.listdir('./cogs'):
+                if filename.endswith('.py'):
+                    try:
+                        bot.unload_extension(f'cogs.{filename[:-3]}')
+                    except commands.ExtensionNotLoaded:
+                        pass
+                    bot.load_extension(f'cogs.{filename[:-3]}')
+                    print(f'Reloaded {filename}')
+            print(f'Reloaded all')
+        else:
+            bot.unload_extension(f'cogs.{extension}')
+            bot.load_extension(f'cogs.{extension}')
+            print(f'Reloaded {extension}')
     else:
-        bot.unload_extension(f'cogs.{extension}')
-        bot.load_extension(f'cogs.{extension}')
-        print(f'Reloaded {extension}')
+        await ctx.send(file = discord.File(f'./denied.gif'), delete_after=20)
 
 #execution part
 
