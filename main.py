@@ -55,7 +55,7 @@ async def prefix(ctx, pref):
     with open('./config/prefixes.json', 'w') as f:
         json.dump(prefixes, f, indent=4)
 
-@bot.command()
+@bot.command(hidden=True)
 async def load(ctx, extension):
 
     if str(ctx.author) == 'BlueCookieFrog#9874':
@@ -65,7 +65,7 @@ async def load(ctx, extension):
     else:
         await ctx.send(file = discord.File(f'./denied.gif'), delete_after=20)
 
-@bot.command()
+@bot.command(hidden=True)
 async def unload(ctx, extension):
 
     if str(ctx.author) == 'BlueCookieFrog#9874':

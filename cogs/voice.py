@@ -280,7 +280,7 @@ class Voice(commands.Cog):
     async def honk(self, ctx):
 
         rand = random.randint(0, 3)
-        await ctx.send(file=discord.File(f"{loc}/honk{rand}.png"))
+        await ctx.send(file=discord.File(f"{loc}/Res/honk{rand}.png"))
 
         song_there = os.path.isfile(f"{loc}/Res/honk.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
