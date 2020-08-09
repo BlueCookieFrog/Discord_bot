@@ -38,7 +38,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.50
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def araara(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/araara.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -47,7 +47,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.50
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def itjustworks(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/itjustworks.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -92,7 +92,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.70
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def heyyou(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/heyyou.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -101,7 +101,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.70
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def droga(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/droga.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -137,7 +137,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 1.00
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def boomer(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/boomer.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -164,7 +164,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.80
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def super(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/super.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -173,7 +173,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.50
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def argument(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/argument.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -191,7 +191,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.07
 
-    @commands.command()
+    @commands.command(hidden = True)
     async def aniol(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/aniol.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -200,7 +200,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.60
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def dziekuje(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/dziekuje.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -209,7 +209,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.50
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def nieprzeszkadzam(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/nieprzeszkadzam.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
@@ -219,7 +219,7 @@ class Voice(commands.Cog):
             voice.source = discord.PCMVolumeTransformer(voice.source)
             voice.source.volume = 0.50
 
-    @commands.command()
+    @commands.command(hidden=True)
     async def jakto(self, ctx):
         song_there = os.path.isfile(f"{loc}/Res/jakto.mp3")
         voice = get(self.bot.voice_clients, guild=ctx.guild)
