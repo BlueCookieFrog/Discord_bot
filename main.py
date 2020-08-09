@@ -5,7 +5,6 @@ from discord.utils import get
 import os
 
 bot = commands.Bot(command_prefix='.')
-bot_name = 'Tymbelownia#7917'
 
 def read_token():
     with open(f'./token.txt', 'r') as f:
