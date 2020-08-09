@@ -6,3 +6,4 @@ honk*.png
 cogs/__pycache__
 .vscode
 denied.gif
+prefixes.json

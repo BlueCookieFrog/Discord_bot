@@ -1,10 +1,18 @@
 import asyncio
 import discord
+import json
 from discord.ext import commands
 from discord.utils import get
 import os
 
-bot = commands.Bot(command_prefix='.')
+def get_prefix(ctx, message):
+    with open('./config/prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    return prefixes[str(message.guild.id)]
+
+bot = commands.Bot(command_prefix = get_prefix)
+bot_name='Tymbelownia#7917'
 
 def read_token():
     with open(f'./token.txt', 'r') as f:
@@ -16,6 +24,36 @@ token = read_token()
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
+
+@bot.event
+async def on_guild_join(guild):
+    with open('./config/prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes[str(guild.id)] = "."
+
+    with open('./config/prefixes.json', 'w') as f:
+        json.dump(prefixes, f, indent=4)
+
+@bot.event
+async def on_guild_remove(guild):
+    with open('./config/prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes.pop(str(guild.id))
+
+    with open('./config/prefixes.json', 'w') as f:
+        json.dump(prefixes, f, indent=4)
+
+@bot.command()
+async def prefix(ctx, pref):
+    with open('./config/prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes[str(ctx.guild.id)] = pref
+
+    with open('./config/prefixes.json', 'w') as f:
+        json.dump(prefixes, f, indent=4)
 
 @bot.command()
 async def load(ctx, extension):

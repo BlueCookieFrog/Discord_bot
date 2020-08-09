@@ -1,7 +1,9 @@
+import json
 import discord
 from discord.ext import commands
 
 bot_name='Tymbelownia#7917'
+bot_id='<@!706618359231545447>'
 
 class TextMessages(commands.Cog):
 
@@ -13,6 +15,13 @@ class TextMessages(commands.Cog):
         if message.content == 'F' and str(message.author) != bot_name:
             channel = message.channel
             await channel.send('F')
+
+        if message.content == bot_id and str(message.author) != bot_name:
+            with open('./config/prefixes.json', 'r') as f:
+                prefixes = json.load(f)
+
+            channel = message.channel
+            await channel.send(f'Current prefix: {prefixes[str(message.guild.id)]}')
 
 class BotStatus(commands.Cog):
 
