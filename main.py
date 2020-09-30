@@ -12,14 +12,11 @@ def get_prefix(ctx, message):
     return prefixes[str(message.guild.id)]
 
 bot = commands.Bot(command_prefix = get_prefix)
-bot_name='Tymbelownia#7917'
 
 def read_token():
     with open(f'./token.txt', 'r') as f:
         lines = f.readlines()
         return lines[0].strip()
-
-token = read_token()
 
 @bot.event
 async def on_ready():
@@ -57,6 +54,7 @@ async def prefix(ctx, pref):
         json.dump(prefixes, f, indent=4)
 
 @bot.command(hidden=True)
+#@commands.is_owner()
 async def load(ctx, extension):
 
     if str(ctx.author) == 'BlueCookieFrog#9874':
@@ -67,6 +65,7 @@ async def load(ctx, extension):
         await ctx.send(file = discord.File(f'./denied.gif'), delete_after=20)
 
 @bot.command(hidden=True)
+#@commands.is_owner()
 async def unload(ctx, extension):
 
     if str(ctx.author) == 'BlueCookieFrog#9874':
@@ -76,6 +75,7 @@ async def unload(ctx, extension):
         await ctx.send(file = discord.File(f'./denied.gif'), delete_after=20)
 
 @bot.command()
+#@commands.is_owner()
 async def reload(ctx, extension):
 
     if str(ctx.author) == 'BlueCookieFrog#9874':
@@ -99,9 +99,13 @@ async def reload(ctx, extension):
 
 #execution part
 
+bot_name= str(bot.user)
+
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
         print(f'Loaded {filename}')
+
+token = read_token()
 
 bot.run(token)

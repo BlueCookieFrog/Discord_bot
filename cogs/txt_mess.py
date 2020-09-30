@@ -2,7 +2,6 @@ import json
 import discord
 from discord.ext import commands
 
-bot_name='Tymbelownia#7917'
 bot_id='<@!706618359231545447>'
 
 class TextMessages(commands.Cog):
@@ -12,11 +11,11 @@ class TextMessages(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.content == 'F' and str(message.author) != bot_name:
+        if message.content == 'F' and str(message.author) != str(self.bot.user):
             channel = message.channel
             await channel.send('F')
 
-        if message.content == bot_id and str(message.author) != bot_name:
+        if message.content == bot_id and str(message.author) != str(self.bot.user):
             with open('./config/prefixes.json', 'r') as f:
                 prefixes = json.load(f)
 
